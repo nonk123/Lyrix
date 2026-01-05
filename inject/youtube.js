@@ -65,7 +65,7 @@
             const topicEnd = bandName.lastIndexOf(" - ");
             if (topicEnd >= 0) // some channels hide the ` - Topic` suffix somehow
                 bandName = bandName.substring(0, topicEnd);
-            title = bandName + " " + title;
+            title = bandName + " - " + title;
         }
 
         browser.runtime.sendMessage({ action: "openLyrics", title });
