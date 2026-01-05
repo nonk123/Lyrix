@@ -1,35 +1,33 @@
 (function () {
     const OUR_BUTTON_ID = "lyrix";
-    const CONTAINER_ID = "top-level-buttons-computed";
-    const BUTTON_CLASS = "yt-spec-button-shape-next yt-spec-button-shape-next--tonal yt-spec-button-shape-next--mono yt-spec-button-shape-next--size-m";
+    const CONTAINER_ID = "player-container";
+    const BUTTON_STYLE = (function () {
+        const padding = "8px";
+        return `
+position: absolute;
+right: ${padding};
+top: ${padding};
+`;
+    })();
 
     function appendLyrixButton() {
-        const outer = document.createElement("yt-button-view-model");
-        outer.className = "ytd-menu-renderer";
-
-        const shape = document.createElement("yt-button-shape");
-        outer.appendChild(shape);
-
         const button = document.createElement("button");
-        button.textContent = "Lrx", button.id = OUR_BUTTON_ID;
-        button.className = BUTTON_CLASS;
+        button.id = OUR_BUTTON_ID, button.style = BUTTON_STYLE;
+        button.textContent = "Lyrix";
         button.addEventListener("click", () => {
             chrome.runtime.sendMessage({
                 action: "openLyrics",
                 title: document.getElementById("title").textContent,
             });
         });
-        shape.appendChild(button);
 
-        const container = document.getElementById(CONTAINER_ID);
-        container.appendChild(outer);
-
+        document.getElementById(CONTAINER_ID).appendChild(button);
         console.info("Lyrix button attached");
     }
 
     const observer = new MutationObserver((mutationList, observer) => {
         for (const mutation of mutationList) {
-            if (document.getElementById(OUR_BUTTON_ID))
+            if (document.getElementById(OUR_BUTTON_ID) !== null)
                 return;
             if (mutation.type !== "childList")
                 continue;
