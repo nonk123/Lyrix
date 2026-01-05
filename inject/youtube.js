@@ -25,6 +25,7 @@
 
 (function () {
     const OUR_BUTTON_ID = "lyrix";
+    const POPUP_QUERY = ".ytp-popup.ytp-contextmenu";
 
     const menuItem = document.createElement("div");
     menuItem.className = "ytp-menuitem", menuItem.role = "menuitem", menuItem.tabIndex = "0";
@@ -53,19 +54,16 @@
     });
     menuItem.append(icon, label, content);
 
-    function appendLyrixButton() {
-        const popups = document.querySelectorAll(".ytp-popup.ytp-contextmenu");
-        for (const popup of popups)
-            popup.style.height = ""; // a scrollbar appears otherwise
-
-        const candidates = document.querySelectorAll(".ytp-popup.ytp-contextmenu .ytp-panel-menu");
-        for (const container of candidates)
-            container.appendChild(menuItem);
-    }
-
     const observer = new MutationObserver((mutations, observer) => {
-        if (!document.getElementById(OUR_BUTTON_ID))
-            appendLyrixButton();
+        const popup = document.querySelector(POPUP_QUERY);
+        const container = document.querySelector(`${POPUP_QUERY} .ytp-panel-menu`);
+
+        if (!popup || !container)
+            return;
+
+        popup.style.height = "auto"; // a scrollbar appears inside it otherwise
+        container.appendChild(menuItem);
+        observer.disconnect();
     });
     observer.observe(document.body, { childList: true, subtree: true });
 })();
