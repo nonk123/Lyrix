@@ -39,8 +39,7 @@
     icon.appendChild(iconInner);
 
     const label = document.createElement("div");
-    label.className = "ytp-menuitem-label";
-    label.textContent = "Look up lyrics";
+    label.className = "ytp-menuitem-label", label.textContent = "Find lyrics";
 
     const content = document.createElement("div");
     content.className = "ytp-menuitem-content";
