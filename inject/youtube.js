@@ -31,11 +31,11 @@
     menuItem.ariaHasPopup = "false";
 
     const icon = document.createElement("div");
-    icon.className = "ytp-menuitem-icon";
+    icon.className = "ytp-menuitem-icon", icon.style.textAlign = "right";
 
     const iconInner = document.createElement("img");
-    iconInner.width = "16", iconInner.height = iconInner.width;
-    iconInner.src = "https://cdn.simpleicons.org/genius/black/white";
+    iconInner.style.display = "block";
+    iconInner.src = "https://cdn.simpleicons.org/genius/black/white?viewbox=0+0+24+24";
     icon.appendChild(iconInner);
 
     const label = document.createElement("div");
