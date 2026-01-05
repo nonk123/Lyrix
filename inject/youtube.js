@@ -1,6 +1,5 @@
 (function () {
     const OUR_BUTTON_ID = "lyrix";
-    const POPUP_QUERY = ".ytp-popup.ytp-contextmenu";
     const ICONS_CDN = "https://cdn.simpleicons.org";
 
     const menuItem = document.createElement("div");
@@ -41,20 +40,21 @@
     });
 
     const observer = new MutationObserver((mutations, observer) => {
-        const popup = document.querySelector(POPUP_QUERY);
-        const container = document.querySelector(`${POPUP_QUERY} .ytp-panel-menu`);
+        const query = ".ytp-popup.ytp-contextmenu";
+        const popup = document.querySelector(query);
+        const container = document.querySelector(`${query} .ytp-panel-menu`);
 
         if (!popup || !container)
             return;
 
-        if (document.getElementById(OUR_BUTTON_ID)) { // the button duplicates itself sometimes???
-            observer.disconnect();
-            return;
-        }
-
-        popup.style.height = "auto"; // a scrollbar appears inside the popup otherwise
-        container.appendChild(menuItem);
+        if (!document.getElementById(OUR_BUTTON_ID)) // the button duplicates itself sometimes???
+            container.appendChild(menuItem);
         observer.disconnect();
+
+        // A scrollbar appears inside the popup (if the popup even shows up on the first try) unless
+        // its height is set forcibly.
+        const ht = `${17 + container.childElementCount * 40}px`;
+        popup.style.height = container.style.height = container.parentElement.style.height = ht;
     });
     observer.observe(document.body, { childList: true, subtree: true });
 })();
