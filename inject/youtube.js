@@ -54,6 +54,11 @@
         if (!popup || !container)
             return;
 
+        if (document.getElementById(OUR_BUTTON_ID)) { // the button duplicates itself sometimes???
+            observer.disconnect();
+            return;
+        }
+
         popup.style.height = "auto"; // a scrollbar appears inside the popup otherwise
         container.appendChild(menuItem);
         observer.disconnect();
