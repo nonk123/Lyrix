@@ -8,12 +8,12 @@
     },
     "background": {
         "persistent": false,
-        "scripts": ["worker.js"]
+        "scripts": ["utils.js", "worker.js"]
     },
     "content_scripts": [
         {
             "matches": ["https://www.youtube.com/watch*"],
-            "js": ["inject/youtube.js"]
+            "js": ["utils.js", "inject/youtube.js"]
         }
     ]
 }
