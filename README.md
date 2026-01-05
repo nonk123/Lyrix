@@ -1,7 +1,3 @@
 # Lyrix
 
-A basic Firefox extension for looking up the lyrics for a YouTube video of a song.
-
-TODO: add an icon.
-
-TODO: refine and publish.
+A basic Firefox extension that adds a context-menu button to search for the lyrics of the played YouTube video.
