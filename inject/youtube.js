@@ -1,6 +1,7 @@
 (function () {
     const OUR_BUTTON_ID = "lyrix";
     const POPUP_QUERY = ".ytp-popup.ytp-contextmenu";
+    const ICONS_CDN = "https://cdn.simpleicons.org";
 
     Object.defineProperty(Node.prototype, "trimmedText", {
         get: function () {
@@ -12,13 +13,12 @@
     menuItem.className = "ytp-menuitem", menuItem.role = "menuitem", menuItem.tabIndex = "0";
     menuItem.ariaHasPopup = "false";
 
-    const icon = document.createElement("div");
-    icon.className = "ytp-menuitem-icon", icon.style.textAlign = "right";
+    const iconContainer = document.createElement("div");
+    iconContainer.className = "ytp-menuitem-icon", iconContainer.style.textAlign = "right";
 
-    const iconInner = document.createElement("img");
-    iconInner.style.display = "block";
-    iconInner.src = "https://cdn.simpleicons.org/genius/black/white?viewbox=0+0+24+24";
-    icon.appendChild(iconInner);
+    const icon = document.createElement("img");
+    icon.style.display = "block", icon.src = `${ICONS_CDN}/genius/black/white?viewbox=0+0+24+24`;
+    iconContainer.appendChild(icon);
 
     const label = document.createElement("div");
     label.className = "ytp-menuitem-label", label.textContent = "Find lyrics";
@@ -26,7 +26,7 @@
     const content = document.createElement("div");
     content.className = "ytp-menuitem-content";
 
-    menuItem.id = OUR_BUTTON_ID;
+    menuItem.id = OUR_BUTTON_ID, menuItem.append(iconContainer, label, content);
     menuItem.addEventListener("click", () => {
         let title = document.querySelector("#title h1 > yt-formatted-string").trimmedText;
 
@@ -45,7 +45,6 @@
 
         browser.runtime.sendMessage({ action: "openLyrics", title });
     });
-    menuItem.append(icon, label, content);
 
     const observer = new MutationObserver((mutations, observer) => {
         const popup = document.querySelector(POPUP_QUERY);
