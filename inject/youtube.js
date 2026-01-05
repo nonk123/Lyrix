@@ -3,12 +3,6 @@
     const POPUP_QUERY = ".ytp-popup.ytp-contextmenu";
     const ICONS_CDN = "https://cdn.simpleicons.org";
 
-    Object.defineProperty(Node.prototype, "trimmedText", {
-        get: function () {
-            return this.textContent.trimFr();
-        }
-    });
-
     const menuItem = document.createElement("div");
     menuItem.className = "ytp-menuitem", menuItem.role = "menuitem", menuItem.tabIndex = "0";
     menuItem.ariaHasPopup = "false";
