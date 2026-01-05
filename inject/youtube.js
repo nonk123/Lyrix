@@ -54,7 +54,7 @@
         if (!popup || !container)
             return;
 
-        popup.style.height = "auto"; // a scrollbar appears inside it otherwise
+        popup.style.height = "auto"; // a scrollbar appears inside the popup otherwise
         container.appendChild(menuItem);
         observer.disconnect();
     });
