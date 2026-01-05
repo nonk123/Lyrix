@@ -2,7 +2,7 @@
 
 [![Screenshot showcasing the "find lyrics" context-menu item added by the addon.](.github/assets/showcase.png)](https://youtu.be/t5PySbFS6Tg)
 
-A based Firefox addon providing a context-menu button to find the lyrics for the played YouTube video.
+A **based** Firefox addon providing a context-menu button to find the lyrics for the played YouTube video.
 
 ## Installation
 
