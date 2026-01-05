@@ -66,7 +66,7 @@
             title = bandName + " " + title;
         }
 
-        chrome.runtime.sendMessage({ action: "openLyrics", title });
+        browser.runtime.sendMessage({ action: "openLyrics", title });
     });
     menuItem.append(icon, label, content);
 
