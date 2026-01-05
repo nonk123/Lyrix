@@ -1,6 +1,5 @@
 (function () {
-    const OUR_BUTTON_ID = "lyrix";
-    const ICONS_CDN = "https://cdn.simpleicons.org";
+    const OUR_BUTTON_ID = "lyrix", ICONS_CDN = "https://cdn.simpleicons.org";
 
     const menuItem = document.createElement("div");
     menuItem.className = "ytp-menuitem", menuItem.role = "menuitem", menuItem.tabIndex = "0";
@@ -40,8 +39,7 @@
     });
 
     const observer = new MutationObserver((mutations, observer) => {
-        const query = ".ytp-popup.ytp-contextmenu";
-        const popup = document.querySelector(query);
+        const query = ".ytp-popup.ytp-contextmenu", popup = document.querySelector(query);
         const container = document.querySelector(`${query} .ytp-panel-menu`);
 
         if (!popup || !container)
