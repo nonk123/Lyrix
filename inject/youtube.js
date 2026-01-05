@@ -62,7 +62,9 @@
         // extract that (if possible) and append it to the query.
         if (channelName && snippet && snippet.trimmedText.startsWith("Provided to YouTube by ")) {
             let bandName = channelName.trimmedText;
-            bandName = bandName.substring(0, bandName.lastIndexOf(" - "));
+            const topicEnd = bandName.lastIndexOf(" - ");
+            if (topicEnd >= 0) // some channels hide the ` - Topic` suffix somehow
+                bandName = bandName.substring(0, topicEnd);
             title = bandName + " " + title;
         }
 
