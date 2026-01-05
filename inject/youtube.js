@@ -3,7 +3,10 @@
         const button = document.createElement("button");
         button.textContent = "Lrx", button.id = "lyrix";
         button.addEventListener("click", () => {
-            lyrixDwim(document.getElementById("title").textContent);
+            chrome.runtime.sendMessage({
+                action: "openLyrics",
+                title: document.getElementById("title").textContent,
+            });
         });
         document.getElementById("actions").appendChild(button);
         console.info("Lyrix button attached");

@@ -1,4 +1,10 @@
+function lyrixGeniusSearchUrl(videoTitle) {
+    return `https://genius.com/search?q=${encodeURIComponent(videoTitle)}`
+}
+
 browser.runtime.onMessage.addListener((request, sender, sendResponse) => {
-	if (request.action === "openLyricsTab")
-		browser.tabs.create({ url: request.url, active: true });
+    if (request.action === "openLyrics") {
+        const url = lyrixGeniusSearchUrl(request.title.trim());
+        browser.tabs.create({ url, active: true })
+    }
 });
