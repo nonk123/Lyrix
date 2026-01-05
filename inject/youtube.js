@@ -8,6 +8,11 @@
     const icon = document.createElement("div");
     icon.className = "ytp-menuitem-icon";
 
+    const iconInner = document.createElement("img");
+    iconInner.width = "16", iconInner.height = iconInner.width;
+    iconInner.src = "https://cdn.simpleicons.org/genius/black/white";
+    icon.appendChild(iconInner);
+
     const label = document.createElement("div");
     label.className = "ytp-menuitem-label";
     label.textContent = "Look up lyrics";
