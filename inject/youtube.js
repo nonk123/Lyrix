@@ -35,6 +35,7 @@
             title = bandName + " - " + title;
         }
 
+        // Have to use a background worker to open pages from a content-script...
         browser.runtime.sendMessage({ action: "openLyrics", title });
     });
 
