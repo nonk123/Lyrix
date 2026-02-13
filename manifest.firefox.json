@@ -15,8 +15,7 @@
                 "https://www.youtube.com/watch*"
             ],
             "js": [
-                "utils.js",
-                "inject/youtube.js"
+                "youtube.js"
             ]
         }
     ],
