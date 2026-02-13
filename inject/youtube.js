@@ -9,7 +9,7 @@
     iconContainer.className = "ytp-menuitem-icon", iconContainer.style.textAlign = "right";
 
     const icon = document.createElement("img");
-    icon.style.display = "block", icon.src = `${ICONS_CDN}/genius/black/white?viewbox=0+0+24+24`;
+    icon.style.display = "block", icon.src = `${ICONS_CDN}/genius/white?viewbox=0+0+24+24`;
     iconContainer.appendChild(icon);
 
     const label = document.createElement("div");
