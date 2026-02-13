@@ -1,0 +1,28 @@
+{
+    "manifest_version": 3,
+    "name": "Lyrix",
+    "version": "0.1.0",
+    "description": "Adds a context-menu button to find the lyrics for the played YouTube video.",
+    "icons": {
+        "48": "icons/48.png"
+    },
+    "permissions": [
+        "activeTab"
+    ],
+    "content_scripts": [
+        {
+            "matches": [
+                "https://www.youtube.com/watch*"
+            ],
+            "js": [
+                "utils.js",
+                "inject/youtube.js"
+            ]
+        }
+    ],
+    "background": {
+        "scripts": [
+            "worker.js"
+        ]
+    }
+}

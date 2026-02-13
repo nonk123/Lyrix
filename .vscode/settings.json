@@ -1,7 +1,4 @@
 {
-    "editor.formatOnSave": false,
-    "editor.formatOnSaveMode": "file",
-    "[javascript]": {
-        "editor.formatOnSave": true
-    }
+    "editor.formatOnSave": true,
+    "editor.formatOnSaveMode": "file"
 }
