@@ -1,8 +1,9 @@
-try {
-    importScripts("utils.js");
-} catch (e) {
-    console.error(e);
+String.prototype.trimFr = function () {
+    return this.replace(/[\n\r\t]/g, '').trim();
 }
+
+if (typeof browser === "undefined")
+    globalThis.browser = chrome;
 
 browser.runtime.onMessage.addListener((request, sender, sendResponse) => {
     function geniusSearchUrl(title) {
